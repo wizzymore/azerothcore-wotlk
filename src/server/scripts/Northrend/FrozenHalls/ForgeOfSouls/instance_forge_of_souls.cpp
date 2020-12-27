@@ -161,6 +161,17 @@ public:
             return 0;
         }
 
+        uint32 GetData(uint32 type) const override
+        {
+            switch (type)
+            {
+                case DATA_INSTANCE:
+                    return (m_auiEncounter[0] == DONE && m_auiEncounter[1] == DONE) ? DONE : IN_PROGRESS;
+            }
+
+            return 0;
+        }
+
         bool CheckAchievementCriteriaMeet(uint32 criteria_id, Player const*  /*source*/, Unit const*  /*target*/, uint32  /*miscvalue1*/) override
         {
             switch(criteria_id)

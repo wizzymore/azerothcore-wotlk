@@ -11,6 +11,7 @@ enum Data
 {
     DATA_BRONJAHM,
     DATA_DEVOURER,
+    DATA_INSTANCE,
     MAX_ENCOUNTER,
 };
 
