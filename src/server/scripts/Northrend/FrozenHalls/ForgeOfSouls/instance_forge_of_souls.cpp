@@ -166,7 +166,7 @@ public:
             switch (type)
             {
                 case DATA_INSTANCE:
-                    return (m_auiEncounter[0] == DONE && m_auiEncounter[1] == DONE) ? DONE : IN_PROGRESS;
+                    return m_auiEncounter[DATA_DEVOURER];
             }
 
             return 0;
