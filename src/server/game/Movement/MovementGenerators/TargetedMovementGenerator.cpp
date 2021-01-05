@@ -76,7 +76,13 @@ void TargetedMovementGeneratorMedium<T, D>::_setTargetLocation(T* owner, bool in
         }
 
         // to nearest contact position
-        i_target->GetContactPoint(owner, x, y, z);
+        /** NOTE: creatures should reach you using the
+        * nearest contact point, however, disabling it
+        * simplify the job for the repositioning algorithm
+        * that must be still used to resolve creature collisions
+        * @todo we could probably create a conf for it.
+        */
+        //i_target->GetContactPoint(owner, x, y, z);
     }
     else
     {
