@@ -193,16 +193,14 @@ void TargetedMovementGeneratorMedium<T, D>::_setTargetLocation(T* owner, bool in
 
         bool result = i_path->CalculatePath(x, y, z, forceDest);
         const Unit *unit = owner->ToUnit();
-        float _tempX=x, _tempY=y, _tempZ=z;
-        if (result && unit && !unit->GetMap()->CanReachPositionAndGetCoords(unit, i_path, _tempX, _tempY, _tempZ, false)) {
-            // recalculate
-            i_target->GetContactPoint(owner, _tempX, _tempY, _tempZ);
-            result = i_path->CalculatePath(_tempX, _tempY, _tempZ, forceDest);
-        }
+        if (result && unit && !unit->GetMap()->CanReachPositionAndGetCoords(unit, i_path, x, y, z, false)) {
+            if (!i_offset) {
+                i_target->GetContactPoint(owner, x, y, z);
+            }
 
-        x = _tempX;
-        y = _tempY;
-        z = _tempZ;
+            // recalculate
+            result = i_path->CalculatePath(x, y, z, forceDest);
+        }
 
         if (result)
         {
